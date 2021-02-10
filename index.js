@@ -1,6 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser')
+const mongoose = require('mongoose');
+const Form = require('./model/form');
 
+const dbURI = "mongodb+srv://vimal:8jvsAqznhwOACujN@cluster0.dwrea.mongodb.net/covid_Form?retryWrites=true&w=majority";
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(result => console.log('connected to db'))
+  .catch(err => console.log(err));
+
+  
 const app = express();
 app.set('view engine', 'ejs');
 
@@ -18,7 +26,16 @@ app.get('/form', (req, res) => {
 });
 app.post('/', (req, res) => {
     const postBody = req.body;
-    res.render('thanks', {postBody})
+    const form = new Form({
+        firstname: 'Vimal',
+        lastname: 'kumar',
+        email: 'Vimal@letskhabar.com',
+        age: '20',
+        gender: 'male',
+    })
+    form.save()
+    .then(result =>res.render('thanks', {postBody}))
+    .catch(err => console.log(err))
 });
 app.get('/about', (req, res) => {
     res.send("hello backend about")
