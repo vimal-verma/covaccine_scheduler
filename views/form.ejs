@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="style.css">
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com"> 
+        <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" >
+
+        <title>Register</title>
+    </head>
+    <body style="text-align: center;">
+      <%- include('components/header.ejs'); -%>
+
+        <h5>Register yourself for Vaccination</h5>
+        <div>
+
+        <form action="/" method="POST">
+            First Name: <input type="text" name="firstname" > <br>
+            <br>
+            Last Name: <input type="text" name="lastname"> <br>
+            <br>
+            Email: <input type="email" required name="email"> <br>
+            <br>
+            Password: <input type="password" min="8" name="password"> <br> <br>
+            Age: <input type="date" name="age"> <br> <br>
+            Gender: <br>
+            Male <input type="radio" name="gender" value="male"> <br> 
+            Female <input type="radio" name="gender" value="female"> <br>
+            Other <input type="radio" name="gender" value="other"> <br> <br>
+            Profession:
+            <select name="profession">
+                <option name="profession">Healthcare Personnel</option>
+                <option name="profession">Frontline essential workers</option> 
+                <option name="profession">Other essential workers</option> 
+                <option name="profession">Other</option> 
+            </select> <br> <br>
+            Health Conditions: <br>
+            <input type="checkbox" name="lungproblems"> Lung Problems <br>
+            <input type="checkbox" name="heartdisease"> Heart Disease <br>
+            <input type="checkbox" name="diabetes"> Diabetes <br>
+            <input type="checkbox" name="obesity"> Obesity <br>
+            <input type="checkbox" name="cancer"> Cancer <br>
+            <input type="checkbox" name="hiv/aids"> HIV/AIDS <br>
+            <input type="checkbox" name="chronickidneyorliverdisease"> Chronic kidney or Liver Disease <br> <br>
+            Have you or your family been infected by COVID-19 before?:
+            <select name="covidbefore">
+                <option value="yes" name="yes">Yes</option>
+                <option value="no" name="no">No</option> 
+            </select>
+            <br> <br>
+            <input type="submit" class = "btn btn-outline-dark" value="Register">
+        </form>
+         </div>
+         <%- include('components/footer.ejs'); -%>
+
+         <!--JavaScript - Bootstrap Bundle with Popper -->
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    </body>
+</html>
