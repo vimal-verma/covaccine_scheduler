@@ -27,11 +27,11 @@ app.get('/form', (req, res) => {
 app.post('/', (req, res) => {
     const postBody = req.body;
     const form = new Form({
-        firstname: 'Vimal',
-        lastname: 'kumar',
-        email: 'Vimal@letskhabar.com',
-        age: '20',
-        gender: 'male',
+        firstname: postBody.firstname,
+        lastname: postBody.lastname,
+        email: postBody.email,
+        age: postBody.age,
+        gender: postBody.gender,
     })
     form.save()
     .then(result =>res.render('thanks', {postBody}))
