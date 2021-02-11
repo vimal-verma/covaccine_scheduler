@@ -2,8 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
 const Form = require('./model/form');
+require('dotenv').config()
 
-const dbURI = "mongodb+srv://vimal:8jvsAqznhwOACujN@cluster0.dwrea.mongodb.net/covid_Form?retryWrites=true&w=majority";
+const dbURI = process.env.DB_URL;
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(result => console.log('connected to db'))
   .catch(err => console.log(err));
