@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
-const Form = require('./model/form');
+const User = require('./model/user');
+const bcrypt = require('bcryptjs');
 require('dotenv').config()
 
 const dbURI = process.env.DB_URL;
@@ -22,27 +23,40 @@ app.use(bodyParser.json());
 app.get('/', (req, res) => {
     res.render('index')
 });
-app.get('/form', (req, res) => {
-    res.render('form')
+app.get('/register', (req, res) => {
+    res.render('register')
 });
-app.post('/', (req, res) => {
+app.get('/login', (req, res) => {
+    res.render('login')
+});
+app.post('/register', (req, res) => {
     const postBody = req.body;
-    const form = new Form({
+    const user = new User({
         firstname: postBody.firstname,
         lastname: postBody.lastname,
         email: postBody.email,
         age: postBody.age,
         gender: postBody.gender,
+        password: postBody.password
     })
-    form.save()
-    .then(result =>res.render('thanks', {postBody}))
-    .catch(err => console.log(err))
+    bcrypt.genSalt(10, (err, salt)=>{
+        bcrypt.hash(user.password, salt, (err, hash)=>{
+            if(err){
+                console.log(err)
+            }else{
+                user.password = hash;
+                user.save()
+                .then(result =>res.render('home', {postBody}))
+                .catch(err => console.log(err))
+            }
+        })
+    })
 });
 app.get('/about', (req, res) => {
-    res.send("hello backend about")
+    res.render('about')
 });
 app.get('*', (req, res) => {
-    res.send("hello backend error")
+    res.render('error')
 });
 
 
