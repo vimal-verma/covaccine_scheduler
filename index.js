@@ -39,18 +39,46 @@ app.post('/register', (req, res) => {
         gender: postBody.gender,
         password: postBody.password
     })
-    bcrypt.genSalt(10, (err, salt)=>{
-        bcrypt.hash(user.password, salt, (err, hash)=>{
-            if(err){
-                console.log(err)
-            }else{
-                user.password = hash;
+    // bcrypt.genSalt(10, (err, salt)=>{
+    //     bcrypt.hash(user.password, salt, (err, hash)=>{
+    //         if(err){
+    //             console.log(err)
+    //         }else{
+    //             user.password = hash;
                 user.save()
                 .then(result =>res.render('home', {postBody}))
                 .catch(err => console.log(err))
-            }
-        })
+    //         }
+    //     })
+    // })
+});
+
+app.post('/login', (req, res) => {
+    const postBody = req.body;
+    const user = new User({
+        email: postBody.email,
+        password: postBody.password
     })
+    // bcrypt.genSalt(10, (err, salt)=>{
+    //     bcrypt.hash(user.password, salt, (err, hash)=>{
+    //         if(err){
+    //             console.log(err)
+    //         }else{
+    //             user.password = hash;
+    //             // login function
+                const query  = User.where({ email: user.email });
+                query.findOne()
+                .then(result => {
+                    if(user.password === result.password){
+                        res.render('home',{postBody : result})
+                    }else{
+                        res.redirect('login')
+                    }
+                })
+                .catch(err => console.log(err))
+    //         }
+    //     })
+    // })
 });
 app.get('/about', (req, res) => {
     res.render('about')
