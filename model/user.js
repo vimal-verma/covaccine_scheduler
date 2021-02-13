@@ -26,6 +26,18 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
+  profession: {
+    type: Number,
+    required: true
+  },
+  covidbefore: {
+    type: String,
+    required: true
+  },
+  score: {
+    type: Number,
+    required: true
+  },
 }, { timestamps: true });
 
 const user = mongoose.model('user', userSchema);

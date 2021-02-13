@@ -20,15 +20,15 @@
             <br>
             Birthday: <input type="date" name="age" required> <br> <br>
             Gender: <br>
-            Male <input type="radio" name="gender" value="male"> <br> 
+            Male <input type="radio" name="gender" value="male" required> <br> 
             Female <input type="radio" name="gender" value="female"> <br>
             Other <input type="radio" name="gender" value="other"> <br> <br>
             Profession:
             <select name="profession" required>
-                <option name="profession">Healthcare Personnel</option>
-                <option name="profession">Frontline essential workers</option> 
-                <option name="profession">Other essential workers</option> 
-                <option name="profession">Other</option> 
+                <option name="profession" value="0">Healthcare Personnel</option>
+                <option name="profession" value="1">Frontline essential workers</option> 
+                <option name="profession" value="2">Other essential workers</option> 
+                <option name="profession" value="3">Other</option> 
             </select> <br> <br>
             Health Conditions: <br>
             <input type="checkbox" name="lungproblems"> Lung Problems <br>
@@ -39,13 +39,13 @@
             <input type="checkbox" name="hiv/aids"> HIV/AIDS <br>
             <input type="checkbox" name="chronickidneyorliverdisease"> Chronic kidney or Liver Disease <br> <br>
             Have you or your family been infected by COVID-19 before?:
-            <select name="covidbefore">
+            <select name="covidbefore" required>
                 <option value="yes" name="yes">Yes</option>
                 <option value="no" name="no">No</option> 
             </select>
             <br> <br>
             Password: <input type="password" name="password" required><br>
-            Please don't your repetitive password
+            Please don't use your repetitive password
             <br><br>
             <input type="submit" class = "btn btn-outline-dark" value="Register">
         </form>

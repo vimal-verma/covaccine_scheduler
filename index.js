@@ -38,7 +38,10 @@ app.post('/register', (req, res) => {
         email: postBody.email,
         age: postBody.age,
         gender: postBody.gender,
-        password: postBody.password
+        password: postBody.password,
+        profession: postBody.profession,
+        covidbefore: postBody.covidbefore,
+        score: 0
     })
     // bcrypt.genSalt(10, (err, salt)=>{
     //     bcrypt.hash(user.password, salt, (err, hash)=>{
@@ -46,6 +49,35 @@ app.post('/register', (req, res) => {
     //             console.log(err)
     //         }else{
     //             user.password = hash;
+    var today = new Date();
+    var age = today.getFullYear() - user.age.getFullYear();
+    let score = 0
+
+    if(age>74){
+        score = score+100
+    }else if(age>60){
+        score = score+75
+    }else{
+        score = score+10
+    }
+
+
+      switch(user.profession) {
+        case 0:  // Healthcare Personnel
+            score = score+200
+          break;
+        case 1:  // Frontline essential workers
+            score = score+150
+          break;
+        case 1:  // Other essential workers
+            score = score+10
+          break;
+        default:  // Other
+            score = score+0
+      }
+
+      user.score = score
+      
                 user.save()
                 .then(result =>res.render('home', {postBody}))
                 .catch(err => console.log(err))
