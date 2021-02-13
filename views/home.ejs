@@ -26,15 +26,15 @@
       <h1>Hey! <%= postBody.firstname %> <%= postBody.lastname %> (<%= postBody.email %>) Thanks for submit this form we will contact you soon</h1>
       <img src="source.gif" alt="accepted" />
       <div class="receipt">
-          Receipt No. : Random 
-          Applicant Name : <%= postBody.firstname %> <%= postBody.lastname %>
+          Receipt No. : Random <br>
+          Applicant Name : <%= postBody.firstname %> <%= postBody.lastname %> <br>
           Registration Date : <p>
                                 <script> document.write(new Date().toLocaleDateString()); </script>
-                            </p>
-        Contact No. :   <%= postBody.number %>
-        Aadhar No. :   <%= postBody.aadhar %>
+                            </p> <br>
+        Contact No. :   <%= postBody.number %> <br>
+        Aadhar No. :   <%= postBody.aadhar %> <br>
 
-        Further appointment details will be shared with you on your registered email and phone.
+        Further appointment details will be shared with you on your registered email and phone. <br>
         </div>
         <div class="footer">
         <%- include('components/footer.ejs'); -%>
