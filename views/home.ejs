@@ -21,12 +21,6 @@
     </style>        
         <title>Covaccine Scheduler</title>
     </head>
-    <body style="text-align: center;">
-      <%- include('components/header.ejs'); -%>
-
-      <% alluser.forEach(user => { %>
-        <%=  user.email %>
-    <% }) %>
 
     <script>
         console.log(arr)
@@ -34,7 +28,7 @@
 
       <img src="/img/source.gif" width="160" height="145" alt="Accepted" />
       <div class="receipt">
-          <b>Appointment No. :</b> Random <br>
+          <b>Appointment No. :</b> <%= postBody.score %> <br>
           <b>Applicant Name :</b> <%= postBody.firstname %> <%= postBody.lastname %> <br>
           <b>Registration Date :</b>  <script> document.write(new Date().toLocaleDateString()); </script> <br>
         <b>Contact No. :</b>   <%= postBody.phone %> <br>
