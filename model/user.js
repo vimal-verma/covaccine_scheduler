@@ -38,6 +38,35 @@ const userSchema = new Schema({
     type: Number,
     required: true
   },
+  aadhar: {
+    type: Number,
+    required: true
+  },
+  phone: {
+    type: Number,
+    required: true
+  },
+  lungproblems:{
+    type: String,
+  },
+  heartdisease:{
+    type: String,
+  },
+  diabetes:{
+    type: String,
+  },
+  obesity:{
+    type: String,
+  },
+  cancer:{
+    type: String,
+  },
+  hivaids:{
+    type: String,
+  },
+  chronickidneyorliverdisease:{
+    type: String,
+  },
 }, { timestamps: true });
 
 const user = mongoose.model('user', userSchema);

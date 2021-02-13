@@ -24,13 +24,20 @@
     <body style="text-align: center;">
       <%- include('components/header.ejs'); -%>
 
-      <h1>Hey! <%= postBody.firstname %> <%= postBody.lastname %> (<%= postBody.email %>) Thanks for submit this form we will contact you soon</h1>
+      <% alluser.forEach(user => { %>
+        <%=  user.email %>
+    <% }) %>
+
+    <script>
+        console.log(arr)
+    </script>
+
       <img src="/img/source.gif" width="160" height="145" alt="Accepted" />
       <div class="receipt">
           <b>Appointment No. :</b> Random <br>
           <b>Applicant Name :</b> <%= postBody.firstname %> <%= postBody.lastname %> <br>
           <b>Registration Date :</b>  <script> document.write(new Date().toLocaleDateString()); </script> <br>
-        <b>Contact No. :</b>   <%= postBody.number %> <br>
+        <b>Contact No. :</b>   <%= postBody.phone %> <br>
         <b>Aadhar No. :</b>   <%= postBody.aadhar %> <br>
 
         <br>

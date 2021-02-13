@@ -41,6 +41,15 @@ app.post('/register', (req, res) => {
         password: postBody.password,
         profession: postBody.profession,
         covidbefore: postBody.covidbefore,
+        aadhar: postBody.aadhar,
+        phone: postBody.phone,
+        lungproblems : postBody.lungproblems,
+        heartdisease : postBody.heartdisease,
+        diabetes : postBody.diabetes,
+        obesity : postBody.obesity,
+        cancer : postBody.cancer,
+        hivaids : postBody.hivaids,
+        chronickidneyorliverdisease : postBody.chronickidneyorliverdisease,
         score: 0
     })
     // bcrypt.genSalt(10, (err, salt)=>{
@@ -75,11 +84,45 @@ app.post('/register', (req, res) => {
         default:  // Other
             score = score+0
       }
+      if(user.lungproblems){
+        score = score+5
+      }
+      if(user.heartdisease){
+        score = score+1
+      }
+      if(user.diabetes){
+        score = score+2
+      }
+      if(user.obesity){
+        score = score+1
+      }
+      if(user.cancer){
+        score = score+1
+      }
+      if(user.hivaids){
+        score = score+1
+      }
+      if(user.chronickidneyorliverdisease){
+        score = score+1
+      }
 
       user.score = score
+      console.log(user)
       
                 user.save()
-                .then(result =>res.render('home', {postBody}))
+                .then(result =>{
+                    User.find().sort({"score": -1})
+                    .then(alluser =>{
+                        let arr = []
+                        alluser.forEach(user => {
+                            console.log(user.score)
+                            arr = arr + user.email
+                        })
+                        console.log(arr)
+                        res.render('home', {alluser,postBody})
+                    })
+                    // res.render('home', {postBody, })
+                })
                 .catch(err => console.log(err))
     //         }
     //     })
