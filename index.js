@@ -85,13 +85,13 @@ app.post('/register', (req, res) => {
             score = score+0
       }
       if(user.lungproblems){
-        score = score+5
+        score = score+1
       }
       if(user.heartdisease){
         score = score+1
       }
       if(user.diabetes){
-        score = score+2
+        score = score+1
       }
       if(user.obesity){
         score = score+1
