@@ -278,5 +278,6 @@ background: #fff;
 }
 
 .info{
+    left-margin: 2px;
     text-align: left;
 }
