@@ -111,17 +111,17 @@ app.post('/register', (req, res) => {
       
                 user.save()
                 .then(result =>{
-                    User.find().sort({"score": -1})
-                    .then(alluser =>{
-                        let arr = []
-                        alluser.forEach(user => {
-                            console.log(user.score)
-                            arr = arr + user.email
-                        })
-                        console.log(arr)
-                        res.render('home', {alluser,postBody})
-                    })
-                    // res.render('home', {postBody, })
+                    // User.find().sort({"score": -1})
+                    // .then(alluser =>{
+                    //     let arr = []
+                    //     alluser.forEach(user => {
+                    //         console.log(user.score)
+                    //         arr = arr + user.email
+                    //     })
+                    //     console.log(arr)
+                    //     res.render('home', {score,postBody})
+                    // })
+                    res.render('home', {postBody,score })
                 })
                 .catch(err => console.log(err))
     //         }
