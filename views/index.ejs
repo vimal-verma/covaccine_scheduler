@@ -31,37 +31,62 @@
     </div>
     <br />
     <br />
-    <div class="info">
-      <!-- <span>About</span> -->
-      <p>
-        <em>Covaccine Scheduler</em> is the digital solution for vaccination drive, it
-        doesn't work on first come, first serve idea, rather it works on the
-        idea "who needs vaccination first?". <br />
-        Vaccination drive will be phase-wise, details of which are described
-        below. <br />
-         <strong> Phase 1 </strong> <br />
-          Healthcare Personnel. <br />
-          Frontline essential employees working in various
-          government departments. <br>
-          <strong> Phase 2 </strong> <br />
-          People aged 75 years or above because they are at high risk of
-          hospitalization, illness, and death due to COVID-19. <br>
-          <strong> Phase 3 </strong> <br />
-          People aged 65—74 years because they are at high risk of
-          hospitalization, illness, and death due to COVID-19. <br>
-          <strong> Phase 4 </strong> <br />
-          People aged 16—64 years with underlying medical conditions which
-          increase the risk of serious, life-threatening complications from
-          COVID-19. <br>
-          <strong> Phase 5 </strong> <br>
-          Other essential workers, such as people who work in transportation and
-          logistics, food service, housing construction and finance, information
-          technology, communications, energy, law, media, public safety, and
-          public health. <br>
-          <strong> Phase 6 </strong> <br>
-          Rest of the citizens.
-      </p>
+
+
+
+
+    <h1>vaccination Timeline</h1>
+    <p><em>Covaccine Scheduler</em> is the digital solution for vaccination drive, it
+      doesn't work on first come, first serve idea, rather it works on the
+      idea "who needs vaccination first?". <br />
+      Vaccination drive will be phase-wise, details of which are described
+      below. <br /></p>
+    <div class="time">
+      <ul>
+        <li>
+          <div>
+            <time>Phase 1</time>
+            <h5>Healthcare Personnel. </h5>
+            <p>Frontline essential employees working in various government departments.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <time>Phase 2</time>
+            <p>People aged 75 years or above because they are at high risk of hospitalization, illness, and death due to COVID-19.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <time>Phase 3</time>
+            <p>People aged 65—74 years because they are at high risk of hospitalization, illness, and death due to COVID-19. </p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <time>Phase 4</time>
+            <p>People aged 16—64 years with underlying medical conditions which increase the risk of serious, life-threatening complications from COVID-19.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <time>Phase 5</time>
+            <p>Other essential workers, such as people who work in transportation and logistics, food service, housing construction and finance, information technology, communications, energy, law, media, public safety, and public health.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <time>Phase 6</time>
+            <p>Rest of the citizens.</p>
+          </div>
+        </li>
+      </ul>
+      
     </div>
+
+
+
+
     <br />
     <%- include('components/footer.ejs'); -%>
 
@@ -71,5 +96,32 @@
       integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
       crossorigin="anonymous"
     ></script>
+    <script>
+      var items = document.querySelectorAll("li");
+
+function isItemInView(item){
+  var rect = item.getBoundingClientRect();
+  return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
+
+function callbackFunc() {
+    for (var i = 0; i < items.length; i++) {
+      if (isItemInView(items[i])) {
+        items[i].classList.add("show");
+      }
+    }
+  }
+
+  // listen for events
+  window.addEventListener("load", callbackFunc);
+  window.addEventListener("resize", callbackFunc);
+  window.addEventListener("scroll", callbackFunc);
+
+    </script>
   </body>
 </html>
