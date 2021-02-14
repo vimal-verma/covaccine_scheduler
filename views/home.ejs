@@ -1,66 +1,79 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <%- include('components/head.ejs'); -%>
-    <style>
-      .receipt {
-        border: 4px solid #a6e1fa;
-        color: #000000;
-        font-size: 14px;
-        background: rgb(43, 127, 236);
-        background: rgba(27, 152, 235, 0);
-        margin-left: auto;
-        margin-right: auto;
-        width: 40%;
-        padding: 40px;
-        text-align: left;
-      }
-      .footer {
-        bottom: 0;
-      }
-    </style>
-    <title>Covaccine Scheduler</title>
-  </head>
-  <body style="text-align: center">
-    <%- include('components/header.ejs'); -%> <% switch(postBody.profession) {
-    case 0: profession = "Healthcare Personnel" break; case 1: profession =
-    "Frontline essential workers" break; case 2: profession = "Other essential
-    workers" break; default: profession = "Other" } %> <%
-    if(postBody.createdAt){ date = postBody.createdAt }else{ date = Date() } %>
+    <head>
+        <%- include('components/head.ejs'); -%>
+        <style>
+        .receipt{
+            border:4px solid #A6E1FA;
+          color: #000000;
+          font-size:14px;
+          background: rgb(43, 127, 236);
+          background: rgba(27, 152, 235, 0);
+            margin-left: auto;
+            margin-right: auto;
+          width: 40%;
+          padding: 40px;
+         text-align: left;
+        }
+        .footer{
+            bottom: 0;
+        }
+    </style>        
+        <title>Covaccine Scheduler</title>
+    </head>
+    <body style="text-align: center">
+      <%- include('components/header.ejs'); -%>
 
-    <img src="/img/source.gif" width="160" height="145" alt="Accepted" />
-    <h3>You have been successfully registered for the Vaccination.</h3>
-    <div class="receipt">
-      <b>Appointment No. :</b> <%= postBody._id %> <br />
-      <b>Applicant Name :</b> <%= postBody.firstname %> <%= postBody.lastname %>
-      <br />
-      <b>Email. :</b> <%= postBody.email %> <br />
-      <b>Registration Date :</b> <%= date %> <br />
-      <b>Contact No. :</b> <%= postBody.phone %> <br />
-      <b>Aadhar No. :</b> <%= postBody.aadhar %> <br />
-      <b>Gender. :</b> <%= postBody.gender %> <br />
-      <b>Covid Before. :</b> <%= postBody.covidbefore %> <br />
-      <b>Profession. :</b> <%= profession %> <br />
-      <b>Vulnerability Calculator:</b> <%= postBody.score %> <br />
-      <br />
-      <div class="clarification">
-        <p>
-          Kindly refer to this
-          <a
-            href="https://docs.google.com/document/d/17DUk35tgvjMYLotEBmW4f5W6zDDN_QmaBvmaEguFWFU/edit?usp=sharing"
-            >document</a
-          >
-          for more details.
-        </p>
-      </div>
-    </div>
+      <% 
+      switch(postBody.profession) {
+        case 0:
+        profession = "Healthcare Personnel"
+          break;
+        case 1:
+        profession = "Frontline essential workers"
+          break;
+        case 2:
+        profession = "Other essential workers"
+          break;
+        default:
+        profession = "Other"
+      }
+      %>
+      <% 
+      if(postBody.createdAt){
+          date = postBody.createdAt
+      }else{
+          date = Date()
+      }
+      %>
+      
 
-    <div class="footer"><%- include('components/footer.ejs'); -%></div>
-    <!--JavaScript - Bootstrap Bundle with Popper -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+
+      <img src="/img/source.gif" width="160" height="145" alt="Accepted" />
+      <h3> You have been successfully registered for the Vaccination. </h3>
+      <div class="receipt">
+          <b>Appointment No. :</b> <%= postBody._id %> <br>
+          <b>Applicant Name :</b> <%= postBody.firstname %> <%= postBody.lastname %> <br>
+          <b>Email. :</b> <%= postBody.email %> <br>
+          <b>Registration Date :</b>  <%= date %> <br>
+        <b>Contact No. :</b>   <%= postBody.phone %> <br>
+        <b>Aadhar No. :</b>   <%= postBody.aadhar %> <br>
+        <b>Gender. :</b> <%= postBody.gender %> <br>
+        <b>Covid Before. :</b> <%= postBody.covidbefore %> <br>
+        <b>Profession. :</b>   <%= profession  %> <br>
+        <b>Vulnerability Calculator:</b> <%= postBody.score %> <br>
+        <div class="clarification">
+          <p>
+            Kindly refer to this <a href="https://docs.google.com/document/d/17DUk35tgvjMYLotEBmW4f5W6zDDN_QmaBvmaEguFWFU/edit?usp=sharing">document</a> for more details. 
+          </p>
+        </div>
+        <br>
+        </div>
+       
+        <div class="footer">
+        <%- include('components/footer.ejs'); -%>
+        </div>
+        <!--JavaScript - Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    </body>
 </html>
