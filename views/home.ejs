@@ -24,14 +24,43 @@
     <body style="text-align: center">
       <%- include('components/header.ejs'); -%>
 
+      <% 
+      switch(postBody.profession) {
+        case 0:
+        profession = "Healthcare Personnel"
+          break;
+        case 1:
+        profession = "Frontline essential workers"
+          break;
+        case 2:
+        profession = "Other essential workers"
+          break;
+        default:
+        profession = "Other"
+      }
+      %>
+      <% 
+      if(postBody.createdAt){
+          date = postBody.createdAt
+      }else{
+          date = Date()
+      }
+      %>
+      
+
 
       <img src="/img/source.gif" width="160" height="145" alt="Accepted" />
       <div class="receipt">
-          <b>Appointment No. :</b> <%= score %> <br>
+          <b>Appointment No. :</b> <%= postBody._id %> <br>
           <b>Applicant Name :</b> <%= postBody.firstname %> <%= postBody.lastname %> <br>
-          <b>Registration Date :</b>  <script> document.write(new Date().toLocaleDateString()); </script> <br>
+          <b>Email. :</b> <%= postBody.email %> <br>
+          <b>Registration Date :</b>  <%= date %> <br>
         <b>Contact No. :</b>   <%= postBody.phone %> <br>
         <b>Aadhar No. :</b>   <%= postBody.aadhar %> <br>
+        <b>Gender. :</b> <%= postBody.gender %> <br>
+        <b>Covid Before. :</b> <%= postBody.covidbefore %> <br>
+        <b>Profession. :</b>   <%= profession  %> <br>
+        <b>Score. :</b> <%= postBody.score %> <br>
 
         <br>
         Further appointment details will be shared with you on your registered email and phone. <br>

@@ -67,6 +67,9 @@ const userSchema = new Schema({
   chronickidneyorliverdisease:{
     type: String,
   },
+  covidbefore:{
+    type: Boolean,
+  },
 }, { timestamps: true });
 
 const user = mongoose.model('user', userSchema);

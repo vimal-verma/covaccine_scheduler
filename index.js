@@ -105,6 +105,9 @@ app.post('/register', (req, res) => {
       if(user.chronickidneyorliverdisease){
         score = score+1
       }
+      if(user.covidbefore){
+        score = score - 10
+      }
 
       user.score = score
       console.log(user)
@@ -121,7 +124,7 @@ app.post('/register', (req, res) => {
                     //     console.log(arr)
                     //     res.render('home', {score,postBody})
                     // })
-                    res.render('home', {postBody,score })
+                    res.render('home', {postBody:user })
                 })
                 .catch(err => console.log(err))
     //         }
